@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // useEffect को इम्पोर्ट करें
+import { useState, useEffect } from 'react';
 import HeaderData from '../assets/content/content.json';
 
 interface MenuItem {
@@ -17,7 +17,7 @@ interface HeaderDataType {
 function Header() {
   const data: HeaderDataType = HeaderData;
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isHeaderVisible, setIsHeaderVisible] = useState(false); // हेडर की विजिबिलिटी स्टेट
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {

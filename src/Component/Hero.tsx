@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState, useEffect } from 'react'; // useEffect को इम्पोर्ट करें
+import { useState, useEffect } from 'react';
 import PosterData from '../assets/content/content.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +7,11 @@ interface PosyerImage {
   url: string;
 }
 
-interface PosterDataType {
-  Poster: {
-    PosyerImages: PosyerImage[];
-  };
-}
+// interface PosterDataType {
+//   Poster: {
+//     PosyerImages: PosyerImage[];
+//   };
+// }
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
