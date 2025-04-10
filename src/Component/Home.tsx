@@ -1,6 +1,7 @@
 import Hero from './Hero'
 import Services from './Services/Services';
 import Team from './myteam/Team';
+import Reviews from './Reviews/Review'
 const Home = () => {
 return (
 <>
@@ -8,6 +9,7 @@ return (
   </Hero>
   <Services></Services>
   <Team></Team>
+  <Reviews></Reviews>
 </>
 )
 }
