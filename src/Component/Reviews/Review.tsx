@@ -24,7 +24,9 @@ interface PostMenu {
 }
 interface ReviewDataType{
     CustomerReview:{
-        posts: PostMenu[]
+      title: string,
+      titledetial: string,
+      posts: PostMenu[]
     }
 }
 
@@ -32,11 +34,11 @@ const Reviews = () => {
 const data : ReviewDataType = ReviewData;
 const posts = data.CustomerReview.posts;
   return (
-    <div className="bg-white  sm:py-12">
+    <div className="font-mono bg-white  sm:py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">From Clients</h2>
-          <p className="mt-2 text-lg/8 text-gray-600">What Top Industry Leaders Are Saying About Us</p>
+          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">{data.CustomerReview.title}</h2>
+          <p className="mt-2 text-lg/8 text-gray-600">{data.CustomerReview.titledetial}</p>
         </div>
         <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {posts.map((post) => (

@@ -67,7 +67,7 @@ const Services = () => {
   }, [isMobile]);
 
   return (
-    <div className="font-mono py-12 bg-gray-100">
+    <div className="font-mono py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading with falling animation */}
         <h2
@@ -87,7 +87,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`service-box bg-white rounded-lg shadow-md overflow-hidden relative group hover:shadow-xl transition-all duration-700 ease-out opacity-0 transform ${
+              className={`service-box bg-gray-50 rounded-lg shadow-md overflow-hidden relative group hover:shadow-xl transition-all duration-700 ease-out opacity-0 transform ${
                 isBoxesVisible
                   ? 'opacity-100 translate-x-0'
                   : 'translate-x-[-100%]'
