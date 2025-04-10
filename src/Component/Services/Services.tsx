@@ -20,32 +20,51 @@ const Services = () => {
 
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [isBoxesVisible, setIsBoxesVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const headingRef = useRef<HTMLHeadingElement>(null);
   const boxesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === headingRef.current && entry.isIntersecting) {
-            setIsHeadingVisible(true);
-          }
-          if (entry.target === boxesRef.current && entry.isIntersecting) {
-            setIsBoxesVisible(true);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+    setIsMobile(window.innerWidth < 768);
 
-    if (headingRef.current) observer.observe(headingRef.current);
-    if (boxesRef.current) observer.observe(boxesRef.current);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
 
+    window.addEventListener('resize', handleResize);
     return () => {
-      observer.disconnect();
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      setIsHeadingVisible(true);
+      setIsBoxesVisible(true);
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.target === headingRef.current && entry.isIntersecting) {
+              setIsHeadingVisible(true);
+            }
+            if (entry.target === boxesRef.current && entry.isIntersecting) {
+              setIsBoxesVisible(true);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      if (headingRef.current) observer.observe(headingRef.current);
+      if (boxesRef.current) observer.observe(boxesRef.current);
+
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, [isMobile]);
 
   return (
     <div className="font-mono py-12 bg-gray-100">
