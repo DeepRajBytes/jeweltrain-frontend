@@ -29,14 +29,14 @@ const Services = () => {
     <div className="font-mono py-12 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Our Services</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
           {services.map((service, index) => (
             <div
               key={index}
-              className={`service-box bg-white rounded-lg shadow-md overflow-hidden relative group hover:shadow-xl transition-shadow duration-300 transform translate-x-[-20px] opacity-0 ${
-                isVisible ? 'translate-x-0 opacity-100' : ''
-              } transition-transform transition-opacity duration-500 ease-out`}
-              style={{ transitionDelay: `${index * 100}ms` }} // हर बॉक्स में थोड़ा डिले
+              className={`service-box bg-white rounded-lg shadow-md overflow-hidden relative group hover:shadow-xl transition-shadow duration-300 transform opacity-0 ${
+                isVisible ? 'opacity-100' : ''
+              } transition-opacity duration-500 ease-out`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="p-6">
                 <div className="flex justify-center mb-4">
