@@ -1,0 +1,52 @@
+{
+  "Header": {
+    "LogoSrc": "/images/HeaderR.png",
+    "Title": "JewelTrain",
+    "Menu": [
+      {
+        "title": "About Us",
+        "path": "/about-us"
+      },
+      {
+        "title": "Contact Us",
+        "path": "/contact-us"
+      }
+    ]
+  },
+  "Poster": {
+    "PosterImages": [
+      {
+        "url": "/images/Poster/poster1.jpg"
+      },
+      {
+        "url": "/images/Poster/poster2.jpg"
+      },
+      {
+        "url": "/images/Poster/poster3.jpg"
+      }
+    ]
+  },
+  "service": {
+    "ourServic" : [
+      {
+        "title":"Software Consulting",
+        "imgUrl":"/images/HeaderR.png",
+        "description":"We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency",
+        "button":"Learn More"
+      },
+      {
+        "title": "Orient Training",
+        "imgUrl": "/images/HeaderR.png",
+        "description": "We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency",
+        "button": "Join US"
+      },
+      {
+        "title": "Freelancer",
+        "imgUrl": "/images/HeaderR.png",
+        "description": "We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency",
+        "button": "Learn More"
+      }
+    ]
+
+  }
+}
