@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ServiceData from '../../assets/content/content.json';
 
 interface ServiceItem {
@@ -17,25 +17,62 @@ interface ServiceDataType {
 const Services = () => {
   const data: ServiceDataType = ServiceData;
   const services = data.service.ourServic;
-  const [isVisible, setIsVisible] = useState(false);
+
+  const [isHeadingVisible, setIsHeadingVisible] = useState(false);
+  const [isBoxesVisible, setIsBoxesVisible] = useState(false);
+
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const boxesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsVisible(true);
-    }, 300);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === headingRef.current && entry.isIntersecting) {
+            setIsHeadingVisible(true);
+          }
+          if (entry.target === boxesRef.current && entry.isIntersecting) {
+            setIsBoxesVisible(true);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (headingRef.current) observer.observe(headingRef.current);
+    if (boxesRef.current) observer.observe(boxesRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <div className="font-mono py-12 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Our Services</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+        {/* Heading with falling animation */}
+        <h2
+          ref={headingRef}
+          className={`text-3xl font-bold text-gray-800 mb-8 text-center transform ${
+            isHeadingVisible ? 'translate-y-0 opacity-100' : 'translate-y-[-100px] opacity-0'
+          } transition-all duration-700 ease-out`}
+        >
+          Our Services
+        </h2>
+
+        {/* Service boxes with scroll-triggered animation */}
+        <div
+          ref={boxesRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
+        >
           {services.map((service, index) => (
             <div
               key={index}
-              className={`service-box bg-white rounded-lg shadow-md overflow-hidden relative group hover:shadow-xl transition-shadow duration-300 transform opacity-0 ${
-                isVisible ? 'opacity-100' : ''
-              } transition-opacity duration-500 ease-out`}
+              className={`service-box bg-white rounded-lg shadow-md overflow-hidden relative group hover:shadow-xl transition-all duration-700 ease-out opacity-0 transform ${
+                isBoxesVisible
+                  ? 'opacity-100 translate-x-0'
+                  : 'translate-x-[-100%]'
+              }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="p-6">
