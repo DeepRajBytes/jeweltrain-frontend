@@ -7,12 +7,11 @@ import Hero from './Hero/Hero';
 const Home = () => {
 return (
 <>
-  <Hero>
-  </Hero>
-  <Services></Services>
-  <Team></Team>
-  <Reviews></Reviews>
-  <BookConsult></BookConsult>
+  <Hero />
+  <Services />
+  <Team />
+  <Reviews />
+  <BookConsult />
 </>
 )
 }

@@ -3,7 +3,8 @@ import TeamData from "../../assets/content/content.json"
 interface PeopleItem {
     name: string,
     role: string,
-    imageUrl: string
+    imageUrl: string,
+    id:number
 }
 
 interface TeamDatatype {
@@ -48,7 +49,7 @@ const Team = () => {
             className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
           >
             {people.map((person) => (
-              <li key={person.name}>
+              <li key={person.id}>
                 <div className="flex items-center gap-x-6">
                   <img alt="" src={person.imageUrl} className="size-16 rounded-full" />
                   <div>
