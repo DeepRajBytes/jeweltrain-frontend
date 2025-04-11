@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import ServiceData from '../../assets/content/content.json';
+import { useNavigate } from 'react-router-dom';
 
 interface ServiceItem {
   title: string;
   imgUrl: string;
   description: string;
   button: string;
+  href:string;
 }
 
 interface ServiceDataType {
@@ -15,6 +17,7 @@ interface ServiceDataType {
 }
 
 const Services = () => {
+  const navigate = useNavigate()
   const data: ServiceDataType = ServiceData;
   const services = data.service.ourServic;
 
@@ -66,6 +69,10 @@ const Services = () => {
     }
   }, [isMobile]);
 
+  const goto = (path: string) => {
+    navigate(path)
+  }
+
   return (
     <div className="font-mono py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,7 +108,7 @@ const Services = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">{service.title}</h3>
                 <p className="text-gray-700 text-sm mb-4">{service.description}</p>
                 <div className="text-center">
-                  <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
+                  <button onClick={() => goto(service.href)} className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">
                     {service.button}
                   </button>
                 </div>
@@ -111,7 +118,7 @@ const Services = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default Services;

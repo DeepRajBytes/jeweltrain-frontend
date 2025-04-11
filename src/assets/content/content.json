@@ -5,14 +5,15 @@
     "description": "Move your team performance next level train get hire our boys and get best orient serice in the world",
     "buttonone": "Hire US",
     "buttontwo": "Learn More",
-    "anchortagone": "Join us",
+    "buttontwourl": "/about-us",
+    "anchortagone": "Dashboard",
     "navigation": [
       {
         "name": "About Us",
         "href": "/about-us"
       },
       {
-        "name": "Join Team",
+        "name": "Join Us",
         "href": "/career"
       }
     ]
@@ -36,19 +37,22 @@
         "title": "Software Consulting",
         "imgUrl": "/images/HeaderR.png",
         "description": "We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency",
-        "button": "Learn More"
+        "button": "Learn More",
+        "href":"/about-us"
       },
       {
         "title": "Orient Training",
         "imgUrl": "/images/HeaderR.png",
         "description": "We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency",
-        "button": "Join US"
+        "button": "Join US",
+        "href":"/career"
       },
       {
         "title": "Freelancer",
         "imgUrl": "/images/HeaderR.png",
         "description": "We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency",
-        "button": "Learn More"
+        "button": "Learn More",
+        "href":"/about-us"
       }
     ]
   },

@@ -12,7 +12,7 @@ interface Bookconsultant {
 const BookConsult = () => {
   const data: Bookconsultant = bookConsultant.BookConsultant
   return (
-    <div className="font-mono isolate bg-white px-6 py-24 sm:py-27 lg:px-8">
+    <div id="book-consult" className="font-mono isolate bg-white px-6 py-24 sm:py-27 lg:px-8">
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
@@ -61,7 +61,7 @@ const BookConsult = () => {
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="company" className="block text-sm/6 font-semibold text-gray-900">
-              Company
+              Brand Name
             </label>
             <div className="mt-2.5">
               <input
