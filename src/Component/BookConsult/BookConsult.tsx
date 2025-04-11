@@ -1,4 +1,5 @@
 'use client'
+import React, { useState } from 'react';
 import bookConsultant from '../../assets/content/content.json'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 
@@ -10,6 +11,34 @@ interface Bookconsultant {
 }
 
 const BookConsult = () => {
+   const [showThankYou, setShowThankYou] = useState(false);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setShowThankYou(true);
+        form.reset();
+      } else {
+        alert('An error occurred. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred. Please try again.');
+    }
+  };
   const data: Bookconsultant = bookConsultant.BookConsultant
   return (
     <div id="book-consult" className="font-mono isolate bg-white px-6 py-24 sm:py-27 lg:px-8">
@@ -29,7 +58,9 @@ const BookConsult = () => {
         <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">{data.headingone}</h2>
         <p className="mt-2 text-lg/8 text-gray-600">{data.headingtwo}</p>
       </div>
-      <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+      {!showThankYou ? ( <form action="https://formspree.io/f/mkgjklqj"
+          method="POST"
+          onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label htmlFor="first-name" className="block text-sm/6 font-semibold text-gray-900">
@@ -141,7 +172,19 @@ const BookConsult = () => {
            {data.submitButton}
           </button>
         </div>
-      </form>
+      </form>): (<div className="flex items-center justify-center h-80">
+        <div className="p-4 rounded shadow-lg ">
+          <div className="flex flex-col items-center space-y-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="text-green-600 w-28 h-28" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="1">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h1 className="text-4xl font-bold">Thank You !</h1>
+            <p>Thank you for your interest! Our Executive Connect Over a Call or Email Soon.</p>
+          </div>
+        </div>
+        </div>)}
     </div>
   )
 }
