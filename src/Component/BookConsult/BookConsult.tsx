@@ -7,7 +7,9 @@ import { ChevronDownIcon } from '@heroicons/react/16/solid'
 interface Bookconsultant {
   headingone:string,
   headingtwo:string,
-  submitButton:string
+  submitButton:string,
+  thankyou:string,
+  thankyoumesage:string
 }
 
 const BookConsult = () => {
@@ -172,7 +174,8 @@ const BookConsult = () => {
            {data.submitButton}
           </button>
         </div>
-      </form>): (<div className="flex items-center justify-center h-80">
+      </form>): (
+      <div className="flex items-center justify-center h-80">
         <div className="p-4 rounded shadow-lg ">
           <div className="flex flex-col items-center space-y-2">
             <svg xmlns="http://www.w3.org/2000/svg" className="text-green-600 w-28 h-28" fill="none" viewBox="0 0 24 24"
@@ -180,11 +183,11 @@ const BookConsult = () => {
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h1 className="text-4xl font-bold">Thank You !</h1>
-            <p>Thank you for your interest! Our Executive Connect Over a Call or Email Soon.</p>
+            <h1 className="text-4xl font-bold">{data.thankyou}</h1>
+            <p>{data.thankyoumesage}</p>
           </div>
         </div>
-        </div>)}
+      </div>)}
     </div>
   )
 }
