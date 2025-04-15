@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import bookConsultant from '../../assets/content/content.json'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
-
+import { AllRoutes } from '../../Environment/routes';
+import toast, {Toaster} from 'react-hot-toast';
+import axios from 'axios'
 
 interface Bookconsultant {
   headingone:string,
@@ -20,22 +22,32 @@ const BookConsult = () => {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-
+    const payload = {
+      name: formData.get("first-name"),
+      lastname: formData.get("last-name"),
+      brandName: formData.get("company"),
+      email: formData.get("email"),
+      number: formData.get("phone-number"),
+      message: formData.get("message")
+    };
     try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-          Accept: 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        setShowThankYou(true);
+      await axios.post(AllRoutes.ADD_CLIENTS,payload).then((respons)=>{
+        if(respons.data){
+          const data = respons.data
+          if(data.success === 1) {
+            toast.success("Message Sent!");
+            setShowThankYou(true);
+          } else if(data.success === 0) {
+            toast.error("Something went wrong! Mail! on info@jewel.com");
+          } else {
+            toast.error("Something went wrong Mail! on info@jewel.com");
+          }
+        }
+      }).catch(() => {
+         toast.error("Currenlty service is off");
+      }).finally(()=> {
         form.reset();
-      } else {
-        alert('An error occurred. Please try again.');
-      }
+      })
     } catch (error) {
       console.error('Error submitting form:', error);
       alert('An error occurred. Please try again.');
@@ -188,6 +200,7 @@ const BookConsult = () => {
           </div>
         </div>
       </div>)}
+      <Toaster position="top-right"/>
     </div>
   )
 }
