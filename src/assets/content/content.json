@@ -2,12 +2,17 @@
   "Header": {
     "LogoSrc": "/images/HeaderR.png",
     "Title": "JewelTrain",
-    "description": "Move your team performance next level train get hire our boys and get best orient serice in the world",
-    "buttonone": "Hire US",
+    "description": "Only 20 Indian family dominate the jewellary market , The size is approx 90 Billion , but How ?",
+    "ASKUS": " Ask Us",
+    "buttonone": "Hire Team",
     "buttontwo": "Learn More",
     "buttontwourl": "/about-us",
     "anchortagone": "Dashboard",
     "navigation": [
+      {
+        "name": "Home",
+        "href": "/"
+      },
       {
         "name": "About Us",
         "href": "/about-us"
@@ -34,23 +39,23 @@
   "service": {
     "ourServic": [
       {
-        "title": "Software Consulting",
+        "title": "Business Consulting",
         "imgUrl": "/images/HeaderR.png",
-        "description": "We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency",
+        "description": "Unlock your jewellery business’s full potential with our expert consulting services. We offer strategic guidance, operational streamlining, and tailored solutions designed specifically for jewellery  Only Smart Retailers. Drive growth, increase showroom efficiency, and enhance profitability in a competitive market.",
         "button": "Learn More",
-        "href":"/about-us"
+        "href": "/about-us"
       },
       {
-        "title": "Orient Training",
+        "title": "Talent Solutions",
         "imgUrl": "/images/HeaderR.png",
-        "description": "We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency",
-        "button": "Join US",
-        "href":"/career"
+        "description": "Empower your business with skilled ERP-trained professionals and expert cross-functional consulting. Our HR services provide industry-ready manpower tailored for the jewellery sector and beyond — ensuring smooth ERP implementation, process optimization, and team efficiency from day one.",
+        "button": "Learn More",
+        "href": "/career"
       },
       {
-        "title": "Freelancer",
+        "title": "Digital Growth",
         "imgUrl": "/images/HeaderR.png",
-        "description": "We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency situtated at ahemdabad We are software consulting ahgency",
+        "description": "Accelerate your jewellery business online with our Digital Growth solutions. We help you build a strong digital presence through e-commerce setup, branding strategies, and online marketing. From website development to social media and customer engagement, we drive your brand's visibility and sales in the digital marketplace.",
         "button": "Learn More",
         "href": "/about-us"
       }
@@ -59,27 +64,27 @@
   "Team": {
     "people": [
       {
-        "id":1,
-        "name": "'Leslie Alexander'",
-        "role": "'Co-Founder / CEO'",
-        "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        "id": 1,
+        "name": "'Pritesh Desai '",
+        "role": "'Co-Founder / MD'",
+        "imageUrl": "https://www.growingquest.in/wp-content/uploads/2020/05/p200.png"
       },
       {
         "id": 2,
-        "name": "'Leslie Alexander'",
+        "name": "'Nitin Yadav'",
         "role": "'Co-Founder / CEO'",
         "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
       },
       {
-        "id":3,
-        "name": "'Leslie Alexander'",
-        "role": "'Co-Founder / CEO'",
+        "id": 3,
+        "name": "'Deep Raj Chouhan'",
+        "role": "'Co-Founder / CTO'",
         "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
       },
       {
-        "id":4,
-        "name": "'Leslie Alexander'",
-        "role": "'Co-Founder / CEO'",
+        "id": 4,
+        "name": "'Abhishek Verma'",
+        "role": "'CCO'",
         "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
       }
     ]
@@ -92,28 +97,30 @@
         "id": 1,
         "title": "Boost your conversion rate",
         "href": "#",
-        "description": "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
-        "date": "Mar 16, 2020",
+        "description": "An excellent experience with a professional team that delivered tailored solutions to improve operations. Responsive, efficient, and focused on providing value. Highly recommended for businesses aiming to grow and optimize.",
+        "date": "Mar 16, 2021",
         "datetime": "2020-03-16",
         "category": { "title": "Marketing", "href": "#" },
         "author": {
-          "name": "Michael Foster",
-          "role": "Co-Founder / CTO",
+          "name": "Amit Agrawal ",
+          "role": "Director",
+          "brandName": "KundanMala Jewellers ",
           "href": "#",
-          "imageUrl": "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          "imageUrl": "https://www.kundanmalajewels.com/assets/logo2-e218fd13.png"
         }
       },
       {
         "id": 2,
         "title": "Boost your conversion rate",
         "href": "#",
-        "description": "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
-        "date": "Mar 16, 2020",
+        "description": "We had a great experience working with this team. Their expertise and tailored solutions significantly improved our operations. They were responsive, efficient, and focused on delivering value. Highly recommended for any business looking to grow and optimize their processes.",
+        "date": "Mar 16, 2022",
         "datetime": "2020-03-16",
         "category": { "title": "Marketing", "href": "#" },
         "author": {
-          "name": "Michael Foster",
-          "role": "Co-Founder / CTO",
+          "name": "Mohit Chawla ",
+          "role": "Co-Founder",
+          "brandName": "Chawla Jewellers,Delhi ",
           "href": "#",
           "imageUrl": "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
         }
@@ -129,6 +136,7 @@
         "author": {
           "name": "Michael Foster",
           "role": "Co-Founder / CTO",
+          "brandName": "KundanMala",
           "href": "#",
           "imageUrl": "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
         }
@@ -140,7 +148,7 @@
     "headingtwo": "Just Fill The Form And We Will Connect You Soon",
     "submitButton": "Let's Connect",
     "thankyou": "Thank You !",
-    "thankyoumesage":"Thank you for your interest! Our Executive Connect Over a Call or Email Soon."
+    "thankyoumesage": "Thank you for your interest! Our Executive Connect Over a Call or Email Soon."
   },
   "FooterData": {
     "CompanyTitle": "JewelTrain",
@@ -154,6 +162,10 @@
           },
           {
             "name": "FaceBook",
+            "href": "https://github.com/themesberg/flowbite"
+          },
+          {
+            "name": "LinkDin",
             "href": "https://github.com/themesberg/flowbite"
           }
         ]
@@ -172,52 +184,52 @@
         ]
       }
     ],
-    "year":"2025",
-    "AllRight":" All Rights Reserved With Technical Partner Deepraj Techies",
+    "year": "2025",
+    "AllRight": " All Rights Reserved With Technical Partner Deepraj Techies",
     "SocialIcons": [
       {
-      "name": "Facebook",
-      "href": "https://facebook.com",
-      "svg":"<svg class='w-4 h-4' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 8 19'><path fill-rule='evenodd' d='M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z' clip-rule='evenodd'/></svg>" 
-    }, 
-    {
-      "name": "Discord",
-      "href": "https://facebook.com",
-      "svg": "<svg className='w-4 h-4' aria-hidden=true' xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 21 16'><path d='M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.1 0 0 1-1.8 2.045Z'/></svg>"
-    },
-    {
-      "name": "Twitter page",
-      "href": "https://facebook.com",
-      "svg": "<svg class='w-4 h-4' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 20 20'><path fill-rule='evenodd' d='M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z' clip-rule='evenodd'/></svg>"
-    }
-  ]
+        "name": "Facebook",
+        "href": "https://facebook.com",
+        "svg": "<svg class='w-4 h-4' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 8 19'><path fill-rule='evenodd' d='M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z' clip-rule='evenodd'/></svg>"
+      },
+      {
+        "name": "Discord",
+        "href": "https://facebook.com",
+        "svg": "<svg className='w-4 h-4' aria-hidden=true' xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 21 16'><path d='M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.1 0 0 1-1.8 2.045Z'/></svg>"
+      },
+      {
+        "name": "Twitter page",
+        "href": "https://facebook.com",
+        "svg": "<svg class='w-4 h-4' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 20 20'><path fill-rule='evenodd' d='M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z' clip-rule='evenodd'/></svg>"
+      }
+    ]
   },
-  "aboutus":{
-    "headingone":" Empowering Each Other to Succeed",
-    "headingonedecrption":"Every project we've undertaken has been a collaborative effort, where every person involved has left their mark. Together, we've not only constructed buildings but also built enduring connections that define our success story.",
-    "yearofexp":"1+",
-    "YearsofExperience":"Years of Experience",
-    "pcount":"125+",
-    "projectcount":"Successful Projects",
-    "totalcountclient":"52+",
-    "happyclient":"Happy Clients",
-    "imageone":"https://pagedone.io/asset/uploads/1717741205.png",
-    "imagetwo":"https://pagedone.io/asset/uploads/1717741215.png",
-    "imagethree":"https://pagedone.io/asset/uploads/1717751272.png",
-    "headingtwo":"Building Stronger Communities through Collaboration and Empowerment",
-    "headingtwodescriiption":"Through collaborationperse perspectives and strengths are leveraged to create inclusive environments where everyone has the opportunity to thrive. This approach not only fosters personal growth and achievement but also strengthens the fabric of society."
+  "aboutus": {
+    "headingone": " Empowering Each Other to Succeed",
+    "headingonedecrption": "Every project we've undertaken has been a collaborative effort, where every person involved has left their mark. Together, we've not only constructed buildings but also built enduring connections that define our success story.",
+    "yearofexp": "1+",
+    "YearsofExperience": "Years of Experience",
+    "pcount": "125+",
+    "projectcount": "Successful Projects",
+    "totalcountclient": "52+",
+    "happyclient": "Happy Clients",
+    "imageone": "https://pagedone.io/asset/uploads/1717741205.png",
+    "imagetwo": "https://pagedone.io/asset/uploads/1717741215.png",
+    "imagethree": "https://pagedone.io/asset/uploads/1717751272.png",
+    "headingtwo": "Building Stronger Communities through Collaboration and Empowerment",
+    "headingtwodescriiption": "Through collaborationperse perspectives and strengths are leveraged to create inclusive environments where everyone has the opportunity to thrive. This approach not only fosters personal growth and achievement but also strengthens the fabric of society."
   },
-  "CareerPage":{
-    "Brandname":"JewelTrain",
-    "brandlogolink":"/",
-    "CEONAME":"Nilessh ji",
-    "Messagefromceo":"Hey you guys are supersonic you can do anything you just need a one thousand rupees",
-    "position":"CEO at JewelTrain",
-    "personimg":"/",
+  "CareerPage": {
+    "Brandname": "JewelTrain",
+    "brandlogolink": "/",
+    "CEONAME": "Nilima R. Rai",
+    "Messagefromceo": "You are the expert in this field—don’t waste your time in uncertainty. The right path and the perfect opportunity are waiting for you. ",
+    "position": "HR Manager at JewelTrain",
+    "personimg": "/",
     "FormDetail": {
-      "submitbutton":"Submit",
-      "formhead":"Your Profile",
-      "formheaddesc":"Please Fill The Details for Join Our Team"
+      "submitbutton": "Submit",
+      "formhead": "Your Profile",
+      "formheaddesc": "Please Fill The Details for Join Our Team"
     }
   }
 }
