@@ -5,6 +5,8 @@ import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { AllRoutes } from '../../Environment/routes';
 import toast, {Toaster} from 'react-hot-toast';
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 interface Bookconsultant {
   headingone:string,
@@ -16,6 +18,7 @@ interface Bookconsultant {
 
 const BookConsult = () => {
    const [showThankYou, setShowThankYou] = useState(false);
+   const [submitDisabel, setsubmitDisabel] = useState(false)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -30,6 +33,7 @@ const BookConsult = () => {
       number: formData.get("phone-number"),
       message: formData.get("message")
     };
+    setsubmitDisabel(true)
     try {
       await axios.post(AllRoutes.ADD_CLIENTS,payload).then((respons)=>{
         if(respons.data){
@@ -37,16 +41,21 @@ const BookConsult = () => {
           if(data.success === 1) {
             toast.success("Message Sent!");
             setShowThankYou(true);
+            setsubmitDisabel(false)
           } else if(data.success === 0) {
             toast.error("Something went wrong! Mail! on info@jewel.com");
+            setsubmitDisabel(false)
           } else {
             toast.error("Something went wrong Mail! on info@jewel.com");
+            setsubmitDisabel(false)
           }
         }
       }).catch(() => {
          toast.error("Currenlty service is off");
+         setsubmitDisabel(false)
       }).finally(()=> {
         form.reset();
+        setsubmitDisabel(false)
       })
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -181,9 +190,15 @@ const BookConsult = () => {
         <div className="mt-10">
           <button
             type="submit"
-            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+             className={`block w-full rounded-md px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs ${submitDisabel ? 'bg-gray-600 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'}`}
+            disabled={submitDisabel}
           >
-           {data.submitButton}
+           {submitDisabel ? (
+             <FontAwesomeIcon
+              icon={faSpinner}
+              spin
+              className="h-5 w-5 text-white mr-3"
+            />) : (data.submitButton)}
           </button>
         </div>
       </form>): (
