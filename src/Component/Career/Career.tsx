@@ -9,6 +9,7 @@ import { AllRoutes } from "../../Environment/routes";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import toast, { Toaster } from "react-hot-toast";
 
 interface FormDetailType {
   submitbutton: string;
@@ -40,6 +41,7 @@ const Career = () => {
     { _id: string; StateName: string }[]
   >([]);
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
+  const [apiSuceesfull, setApiSuceesfull] = useState(false);
 
   useEffect(() => {
     const Resourccall = async () => {
@@ -102,23 +104,24 @@ const Career = () => {
     payload.append("resumefile", resumeFile);
 
     try {
-      setButtonloading(true)
+      setButtonloading(true);
       const response = await axios.post(`${AllRoutes.ADD_USER}`, payload, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
       if (response.data.success === 1) {
-         setButtonloading(false);
-        alert("Application submitted successfully!");
+        setApiSuceesfull(true);
+        setButtonloading(false);
+        toast.success("Application Submited!");
       } else {
         setButtonloading(false);
-        alert("Submission failed. Please try again.");
+        toast.error("Something went wrong Mail! on career@jewel.com");
       }
     } catch (error) {
       setButtonloading(false);
       console.error("Submission error:", error);
-      alert("An error occurred while submitting the form.");
+      toast.error("Something went wrong Mail! on career@jewel.com");
     } finally {
       setButtonloading(false);
     }
@@ -166,425 +169,443 @@ const Career = () => {
         </div>
       </section>
 
-      {/* Forms Section */}
-      {loading ? (
+      {apiSuceesfull ? (
         <>
-          {/* <img src="/images/Loaders/giphy1.gif" alt="funny gif" /> */}
           <div className="flex flex-col items-center justify-center h-screen text-center pt-2 pb-1">
             <p className="text-lg font-semibold text-gray-700">
-              One form is coming, please wait...
+              Application Successfuly Submitted WE will reach you soon
             </p>
             <DotLottieReact
-              src="/images/Loaders/planeLoader.lottie"
+              src="/images/Loaders/messagesubmitted.lottie"
               loop
               autoplay
+              className="w-180"
             />
           </div>
         </>
       ) : (
         <>
-          <div className="flex justify-center pb-10 px-4 sm:px-6 lg:px-8">
-            <form onSubmit={handleSubmit}>
-              <div className="space-y-12">
-                <div className="border-b border-gray-900/10 pb-12">
-                  <h2 className="text-base/7 font-semibold text-gray-900">
-                    {datas.formhead}
-                  </h2>
-                  <p className="mt-1 text-sm/6 text-gray-600">
-                    {datas.formheaddesc}
-                  </p>
-
-                  <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <div className="col-span-full">
-                      <label
-                        htmlFor="about"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        About
-                      </label>
-                      <div className="mt-2">
-                        <textarea
-                          id="about"
-                          name="about"
-                          rows={3}
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                          defaultValue={""}
-                        />
-                      </div>
-                      <p className="mt-3 text-sm/6 text-gray-600">
-                        Write a few sentences about yourself.
+          {loading ? (
+            <>
+              {/* <img src="/images/Loaders/giphy1.gif" alt="funny gif" /> */}
+              <div className="flex flex-col items-center justify-center h-screen text-center pt-2 pb-1">
+                <p className="text-lg font-semibold text-gray-700">
+                  One form is coming, please wait...
+                </p>
+                <DotLottieReact
+                  src="/images/Loaders/planeLoader.lottie"
+                  loop
+                  autoplay
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex justify-center pb-10 px-4 sm:px-6 lg:px-8">
+                <form onSubmit={handleSubmit}>
+                  <div className="space-y-12">
+                    <div className="border-b border-gray-900/10 pb-12">
+                      <h2 className="text-base/7 font-semibold text-gray-900">
+                        {datas.formhead}
+                      </h2>
+                      <p className="mt-1 text-sm/6 text-gray-600">
+                        {datas.formheaddesc}
                       </p>
-                    </div>
 
-                    {/* resume section */}
-                    <div className="col-span-full">
-                      <label
-                        htmlFor="cover-photo"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        Your Resume
-                      </label>
-                      <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                        <div className="text-center">
-                          <DocumentArrowUpIcon
-                            aria-hidden="true"
-                            className="mx-auto size-12 text-gray-300"
-                          />
-                          <div className="mt-4 flex text-sm/6 text-gray-600">
-                            <label
-                              htmlFor="file-upload"
-                              className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                            >
-                              <span>Upload a file</span>
-                              <input
-                                id="file-upload"
-                                name="file-upload"
-                                type="file"
-                                className="sr-only"
-                                accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                onChange={(e) => {
-                                  const file = e.target.files?.[0];
-                                  if (file) {
-                                    setSelectedFileName(file.name);
-                                  } else {
-                                    setSelectedFileName(null);
-                                  }
-                                }}
-                              />
-                            </label>
-                            <p className="pl-1">or drag and drop</p>
+                      <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                        <div className="col-span-full">
+                          <label
+                            htmlFor="about"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            About
+                          </label>
+                          <div className="mt-2">
+                            <textarea
+                              id="about"
+                              name="about"
+                              rows={3}
+                              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                              defaultValue={""}
+                            />
                           </div>
-                          <p className="text-xs/5 text-gray-600">
-                            PDF or DOCx up to 10MB
+                          <p className="mt-3 text-sm/6 text-gray-600">
+                            Write a few sentences about yourself.
                           </p>
                         </div>
+
+                        {/* resume section */}
+                        <div className="col-span-full">
+                          <label
+                            htmlFor="cover-photo"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            Your Resume
+                          </label>
+                          <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                            <div className="text-center">
+                              <DocumentArrowUpIcon
+                                aria-hidden="true"
+                                className="mx-auto size-12 text-gray-300"
+                              />
+                              <div className="mt-4 flex text-sm/6 text-gray-600">
+                                <label
+                                  htmlFor="file-upload"
+                                  className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                                >
+                                  <span>Upload a file</span>
+                                  <input
+                                    id="file-upload"
+                                    name="file-upload"
+                                    type="file"
+                                    className="sr-only"
+                                    accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                    onChange={(e) => {
+                                      const file = e.target.files?.[0];
+                                      if (file) {
+                                        setSelectedFileName(file.name);
+                                      } else {
+                                        setSelectedFileName(null);
+                                      }
+                                    }}
+                                  />
+                                </label>
+                                <p className="pl-1">or drag and drop</p>
+                              </div>
+                              <p className="text-xs/5 text-gray-600">
+                                PDF or DOCx up to 10MB
+                              </p>
+                            </div>
+                          </div>
+                          {selectedFileName && (
+                            <p className="mt-2 text-sm text-gray-700">
+                              Selected file: {selectedFileName}
+                            </p>
+                          )}
+                        </div>
                       </div>
-                      {selectedFileName && (
-                        <p className="mt-2 text-sm text-gray-700">
-                          Selected file: {selectedFileName}
-                        </p>
+                    </div>
+
+                    {/* personal information section  */}
+                    <div className="border-b border-gray-900/10 pb-12">
+                      <h2 className="text-base/7 font-semibold text-gray-900">
+                        Personal Information
+                      </h2>
+                      <p className="mt-1 text-sm/6 text-gray-600">
+                        Use a Active Email address where you can receive mail.
+                      </p>
+
+                      <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                        <div className="sm:col-span-3">
+                          <label
+                            htmlFor="first-name"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            First name
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              id="first-name"
+                              name="first-name"
+                              type="text"
+                              autoComplete="given-name"
+                              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-3">
+                          <label
+                            htmlFor="last-name"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            Last name
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              id="last-name"
+                              name="last-name"
+                              type="text"
+                              autoComplete="family-name"
+                              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-4">
+                          <label
+                            htmlFor="email"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            Email address
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              id="email"
+                              name="email"
+                              type="email"
+                              autoComplete="email"
+                              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-4">
+                          <label
+                            htmlFor="number"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            Number
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              id="number"
+                              name="number"
+                              type="number"
+                              autoComplete="number"
+                              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-3">
+                          <label
+                            htmlFor="country"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            Country
+                          </label>
+                          <div className="mt-2 grid grid-cols-1">
+                            <select
+                              id="country"
+                              name="country"
+                              autoComplete="country-name"
+                              className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            >
+                              <option>India</option>
+                              <option>Nepal</option>
+                            </select>
+                            <ChevronDownIcon
+                              aria-hidden="true"
+                              className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="col-span-full">
+                          <label
+                            htmlFor="street-address"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            Street address
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              id="street-address"
+                              name="street-address"
+                              type="text"
+                              autoComplete="street-address"
+                              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-2 sm:col-start-1">
+                          <label
+                            htmlFor="city"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            City
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              id="city"
+                              name="city"
+                              type="text"
+                              autoComplete="address-level2"
+                              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-2">
+                          <label
+                            htmlFor="region"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            State / Province
+                          </label>
+                          <div className="mt-2">
+                            <select
+                              id="state"
+                              name="state"
+                              className=" block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600"
+                            >
+                              <option value="">Select State</option>
+                              {StateList.map((state) => (
+                                <option key={state._id} value={state._id}>
+                                  {state.StateName}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-2">
+                          <label
+                            htmlFor="experience"
+                            className="block text-sm font-medium text-gray-900"
+                          >
+                            Total Years of Experience
+                          </label>
+                          <div className="mt-2">
+                            <select
+                              id="experience"
+                              name="experience"
+                              className="mt-[12px] block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600"
+                            >
+                              <option value="">Select experience</option>
+                              {ExpirenceList.map((exp) => (
+                                <option key={exp._id} value={exp._id}>
+                                  {exp.ExperienceRange}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-4">
+                          <label
+                            htmlFor="current-company"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            Current Orgination
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              id="current-company"
+                              name="current-company"
+                              type="text"
+                              autoComplete="current-company"
+                              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-2 sm:col-start-1">
+                          <label
+                            htmlFor="currentCTC"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            Current CTC
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              id="currentCTC"
+                              name="currentCTC"
+                              type="text"
+                              autoComplete="address-level2"
+                              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-2">
+                          <label
+                            htmlFor="expectedCtc"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            Expected CTC
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              id="expectedCtc"
+                              name="expectedCtc"
+                              type="text"
+                              autoComplete="expectedCtc"
+                              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            />
+                          </div>
+                        </div>
+                        <div className="sm:col-span-2">
+                          <label
+                            htmlFor="relocate"
+                            className="block text-sm/6 font-medium text-gray-900"
+                          >
+                            Ready to Relocate
+                          </label>
+                          <div className="mt-2 flex space-x-4">
+                            <label className="inline-flex items-center">
+                              <input
+                                type="radio"
+                                name="relocate"
+                                value="yes"
+                                className="mr-2"
+                              />
+                              Yes
+                            </label>
+                            <label className="inline-flex items-center">
+                              <input
+                                type="radio"
+                                name="relocate"
+                                value="no"
+                                className="mr-2"
+                              />
+                              No
+                            </label>
+                          </div>
+                        </div>
+
+                        <div className="sm:col-span-4 ">
+                          <div className="flex items-center space-x-3">
+                            <input
+                              id="retail-jewellery"
+                              name="retail-jewellery"
+                              type="checkbox"
+                              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                            />
+                            <label
+                              htmlFor="retail-jewellery"
+                              className="block text-sm font-medium text-gray-900"
+                            >
+                              Are you experienced in retail jewellery?
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex items-center justify-end gap-x-6">
+                    <button
+                      type="button"
+                      className="text-sm/6 font-semibold text-gray-900"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      disabled={buttonloading}
+                    >
+                      {buttonloading ? (
+                        <FontAwesomeIcon
+                          icon={faSpinner}
+                          spin
+                          className="h-5 w-5 text-white mr-3"
+                        />
+                      ) : (
+                        <p>Save</p>
                       )}
-                    </div>
+                    </button>
                   </div>
-                </div>
-
-                {/* personal information section  */}
-                <div className="border-b border-gray-900/10 pb-12">
-                  <h2 className="text-base/7 font-semibold text-gray-900">
-                    Personal Information
-                  </h2>
-                  <p className="mt-1 text-sm/6 text-gray-600">
-                    Use a Active Email address where you can receive mail.
-                  </p>
-
-                  <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <div className="sm:col-span-3">
-                      <label
-                        htmlFor="first-name"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        First name
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="first-name"
-                          name="first-name"
-                          type="text"
-                          autoComplete="given-name"
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-3">
-                      <label
-                        htmlFor="last-name"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        Last name
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="last-name"
-                          name="last-name"
-                          type="text"
-                          autoComplete="family-name"
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-4">
-                      <label
-                        htmlFor="email"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        Email address
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          autoComplete="email"
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-4">
-                      <label
-                        htmlFor="number"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        Number
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="number"
-                          name="number"
-                          type="number"
-                          autoComplete="number"
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-3">
-                      <label
-                        htmlFor="country"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        Country
-                      </label>
-                      <div className="mt-2 grid grid-cols-1">
-                        <select
-                          id="country"
-                          name="country"
-                          autoComplete="country-name"
-                          className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        >
-                          <option>India</option>
-                          <option>Nepal</option>
-                        </select>
-                        <ChevronDownIcon
-                          aria-hidden="true"
-                          className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="col-span-full">
-                      <label
-                        htmlFor="street-address"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        Street address
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="street-address"
-                          name="street-address"
-                          type="text"
-                          autoComplete="street-address"
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-2 sm:col-start-1">
-                      <label
-                        htmlFor="city"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        City
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="city"
-                          name="city"
-                          type="text"
-                          autoComplete="address-level2"
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="region"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        State / Province
-                      </label>
-                      <div className="mt-2">
-                        <select
-                          id="state"
-                          name="state"
-                          className=" block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600"
-                        >
-                          <option value="">Select State</option>
-                          {StateList.map((state) => (
-                            <option key={state._id} value={state._id}>
-                              {state.StateName}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="experience"
-                        className="block text-sm font-medium text-gray-900"
-                      >
-                        Total Years of Experience
-                      </label>
-                      <div className="mt-2">
-                        <select
-                          id="experience"
-                          name="experience"
-                          className="mt-[12px] block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600"
-                        >
-                          <option value="">Select experience</option>
-                          {ExpirenceList.map((exp) => (
-                            <option key={exp._id} value={exp._id}>
-                              {exp.ExperienceRange}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-4">
-                      <label
-                        htmlFor="current-company"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        Current Orgination
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="current-company"
-                          name="current-company"
-                          type="text"
-                          autoComplete="current-company"
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-2 sm:col-start-1">
-                      <label
-                        htmlFor="currentCTC"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        Current CTC
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="currentCTC"
-                          name="currentCTC"
-                          type="text"
-                          autoComplete="address-level2"
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="expectedCtc"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        Expected CTC
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="expectedCtc"
-                          name="expectedCtc"
-                          type="text"
-                          autoComplete="expectedCtc"
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        />
-                      </div>
-                    </div>
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="relocate"
-                        className="block text-sm/6 font-medium text-gray-900"
-                      >
-                        Ready to Relocate
-                      </label>
-                      <div className="mt-2 flex space-x-4">
-                        <label className="inline-flex items-center">
-                          <input
-                            type="radio"
-                            name="relocate"
-                            value="yes"
-                            className="mr-2"
-                          />
-                          Yes
-                        </label>
-                        <label className="inline-flex items-center">
-                          <input
-                            type="radio"
-                            name="relocate"
-                            value="no"
-                            className="mr-2"
-                          />
-                          No
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-4 ">
-                      <div className="flex items-center space-x-3">
-                        <input
-                          id="retail-jewellery"
-                          name="retail-jewellery"
-                          type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                        />
-                        <label
-                          htmlFor="retail-jewellery"
-                          className="block text-sm font-medium text-gray-900"
-                        >
-                          Are you experienced in retail jewellery?
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </form>
               </div>
-
-              <div className="mt-6 flex items-center justify-end gap-x-6">
-                <button
-                  type="button"
-                  className="text-sm/6 font-semibold text-gray-900"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  disabled={buttonloading}
-                >
-                  {buttonloading ? (
-                    <FontAwesomeIcon
-                      icon={faSpinner}
-                      spin
-                      className="h-5 w-5 text-white mr-3"
-                    />
-                  ) : (
-                   <p>Save</p>
-                  )}
-                </button>
-              </div>
-            </form>
-          </div>
+            </>
+          )}
         </>
       )}
+      <Toaster position="top-right" />
     </div>
   );
 };

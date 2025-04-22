@@ -19,7 +19,9 @@ interface Bookconsultant {
 const BookConsult = () => {
    const [showThankYou, setShowThankYou] = useState(false);
    const [submitDisabel, setsubmitDisabel] = useState(false)
-
+{
+  /* Forms Section */
+}
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
