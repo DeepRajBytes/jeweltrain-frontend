@@ -158,15 +158,18 @@
         "List": [
           {
             "name": "Instagram",
-            "href": "https://github.com/themesberg/flowbite"
+            "href": "https://github.com/themesberg/flowbite",
+            "docName": ""
           },
           {
             "name": "FaceBook",
-            "href": "https://github.com/themesberg/flowbite"
+            "href": "https://github.com/themesberg/flowbite",
+            "docName": ""
           },
           {
             "name": "LinkDin",
-            "href": "https://github.com/themesberg/flowbite"
+            "href": "https://github.com/themesberg/flowbite",
+            "docName": ""
           }
         ]
       },
@@ -175,11 +178,13 @@
         "List": [
           {
             "name": "Privacy Policy",
-            "href": "https://github.com/themesberg/flowbite"
+            "href": "#",
+            "docName": "pandp.pdf"
           },
           {
             "name": "Terms & Conditions",
-            "href": "https://github.com/themesberg/flowbite"
+            "href": "#",
+            "docName": "tandc.pdf"
           }
         ]
       }
