@@ -83,7 +83,10 @@ const Footer = () => {
           <div className="sm:flex sm:items-center sm:justify-between">
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
               © {data.FooterData.year}"{" "}
-              <a href="https://flowbite.com/" className="hover:underline">
+              <a
+                href="https://deepraj-portfolio.vercel.app/"
+                className="hover:underline"
+              >
                 {data.FooterData.CompanyTitle}.{data.FooterData.AllRight}.
               </a>
             </span>
