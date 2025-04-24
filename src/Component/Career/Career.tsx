@@ -108,7 +108,7 @@ const Career = () => {
     // Check if any required field is empty
     const invalidField = Object.entries(formValues).find(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      ([key, value]) => !value
+      ([_, value]) => !value
     );
 
     if (invalidField) {
