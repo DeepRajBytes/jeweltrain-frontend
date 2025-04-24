@@ -42,6 +42,39 @@ const Career = () => {
   >([]);
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
   const [apiSuceesfull, setApiSuceesfull] = useState(false);
+  const [formValues, setFormValues] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    number: "",
+    country: "India",
+    streetAddress: "",
+    city: "",
+    state: "",
+    experience: "",
+    relocate: "",
+    about: "",
+    resumeFile: null as File | null,
+  });
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const isValid =
+      formValues.firstName &&
+      formValues.lastName &&
+      formValues.email &&
+      formValues.number &&
+      formValues.country &&
+      formValues.streetAddress &&
+      formValues.city &&
+      formValues.state &&
+      formValues.experience &&
+      formValues.relocate &&
+      formValues.about &&
+      formValues.resumeFile;
+
+    setIsFormValid(Boolean(isValid));
+  }, [formValues]);
 
   useEffect(() => {
     const Resourccall = async () => {
@@ -69,6 +102,26 @@ const Career = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+
+    // Check if any required field is empty
+    const invalidField = Object.entries(formValues).find(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      ([key, value]) => !value
+    );
+
+    if (invalidField) {
+      const [fieldName] = invalidField;
+
+      // Focus the corresponding form element by name
+      const input = form.querySelector(`[name="${fieldName}"]`) as HTMLElement;
+      if (input) {
+        input.focus();
+      }
+
+      return; // Stop submission
+    }
     const formData = new FormData(e.currentTarget);
 
     const resumeFile = formData.get("file-upload") as File;
@@ -227,6 +280,12 @@ const Career = () => {
                               rows={3}
                               className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                               defaultValue={""}
+                              onChange={(e) =>
+                                setFormValues({
+                                  ...formValues,
+                                  about: e.target.value,
+                                })
+                              }
                             />
                           </div>
                           <p className="mt-3 text-sm/6 text-gray-600">
@@ -263,6 +322,10 @@ const Career = () => {
                                     onChange={(e) => {
                                       const file = e.target.files?.[0];
                                       if (file) {
+                                        setFormValues({
+                                          ...formValues,
+                                          resumeFile: file || null,
+                                        });
                                         setSelectedFileName(file.name);
                                       } else {
                                         setSelectedFileName(null);
@@ -310,6 +373,12 @@ const Career = () => {
                               type="text"
                               autoComplete="given-name"
                               className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                              onChange={(e) =>
+                                setFormValues({
+                                  ...formValues,
+                                  firstName: e.target.value,
+                                })
+                              }
                             />
                           </div>
                         </div>
@@ -328,6 +397,12 @@ const Career = () => {
                               type="text"
                               autoComplete="family-name"
                               className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                              onChange={(e) =>
+                                setFormValues({
+                                  ...formValues,
+                                  lastName: e.target.value,
+                                })
+                              }
                             />
                           </div>
                         </div>
@@ -346,6 +421,12 @@ const Career = () => {
                               type="email"
                               autoComplete="email"
                               className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                              onChange={(e) =>
+                                setFormValues({
+                                  ...formValues,
+                                  email: e.target.value,
+                                })
+                              }
                             />
                           </div>
                         </div>
@@ -364,6 +445,12 @@ const Career = () => {
                               type="number"
                               autoComplete="number"
                               className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                              onChange={(e) =>
+                                setFormValues({
+                                  ...formValues,
+                                  number: e.target.value,
+                                })
+                              }
                             />
                           </div>
                         </div>
@@ -381,6 +468,12 @@ const Career = () => {
                               name="country"
                               autoComplete="country-name"
                               className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                              onChange={(e) =>
+                                setFormValues({
+                                  ...formValues,
+                                  country: e.target.value,
+                                })
+                              }
                             >
                               <option>India</option>
                               <option>Nepal</option>
@@ -406,6 +499,12 @@ const Career = () => {
                               type="text"
                               autoComplete="street-address"
                               className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                              onChange={(e) =>
+                                setFormValues({
+                                  ...formValues,
+                                  streetAddress: e.target.value,
+                                })
+                              }
                             />
                           </div>
                         </div>
@@ -424,6 +523,12 @@ const Career = () => {
                               type="text"
                               autoComplete="address-level2"
                               className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                              onChange={(e) =>
+                                setFormValues({
+                                  ...formValues,
+                                  city: e.target.value,
+                                })
+                              }
                             />
                           </div>
                         </div>
@@ -440,6 +545,12 @@ const Career = () => {
                               id="state"
                               name="state"
                               className=" block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600"
+                              onChange={(e) =>
+                                setFormValues({
+                                  ...formValues,
+                                  state: e.target.value,
+                                })
+                              }
                             >
                               <option value="">Select State</option>
                               {StateList.map((state) => (
@@ -463,6 +574,12 @@ const Career = () => {
                               id="experience"
                               name="experience"
                               className="mt-[12px] block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600"
+                              onChange={(e) =>
+                                setFormValues({
+                                  ...formValues,
+                                  experience: e.target.value,
+                                })
+                              }
                             >
                               <option value="">Select experience</option>
                               {ExpirenceList.map((exp) => (
@@ -541,6 +658,12 @@ const Career = () => {
                                 name="relocate"
                                 value="yes"
                                 className="mr-2"
+                                onChange={(e) =>
+                                  setFormValues({
+                                    ...formValues,
+                                    relocate: e.target.value,
+                                  })
+                                }
                               />
                               Yes
                             </label>
@@ -550,6 +673,12 @@ const Career = () => {
                                 name="relocate"
                                 value="no"
                                 className="mr-2"
+                                onChange={(e) =>
+                                  setFormValues({
+                                    ...formValues,
+                                    relocate: e.target.value,
+                                  })
+                                }
                               />
                               No
                             </label>
@@ -585,8 +714,13 @@ const Career = () => {
                     </button>
                     <button
                       type="submit"
-                      className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      disabled={buttonloading}
+                      className={`rounded-md px-3 py-2 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2
+                      ${
+                        buttonloading || !isFormValid
+                          ? "bg-gray-400 hover:bg-gray-400 cursor-not-allowed"
+                          : "bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"
+                      }`}
+                      
                     >
                       {buttonloading ? (
                         <FontAwesomeIcon
