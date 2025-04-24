@@ -1,6 +1,5 @@
 export const environment = {
-  backendUrl:
-    import.meta.env.PRODUCTION_MODE === "production"
-      ? "https://jeweltrain-backend.onrender.com/"
-      : "http://localhost:3001/",
+  // backendUrl: "https://jewelservice.vercel.app/",
+  // backendUrl: "http://localhost:3001/",
+  backendUrl: "https://jeweltrain-backend.onrender.com/",
 };
