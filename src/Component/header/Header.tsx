@@ -1,16 +1,14 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import HeaderData from '../../assets/content/content.json';
-import { Link } from 'react-router-dom'; 
-
+import { useState } from "react";
+import { Dialog, DialogPanel } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import HeaderData from "../../assets/content/content.json";
+import { Link } from "react-router-dom";
 
 interface MenuItem {
   name: string;
   href: string;
-  
 }
 
 interface HeaderDataType {
@@ -25,24 +23,26 @@ interface HeaderDataType {
   };
 }
 
-
- const HeadHero = () => {
-    const data: HeaderDataType = HeaderData;
-    const datas = data.Header
-    const navigation = data.Header.navigation
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+const HeadHero = () => {
+  const data: HeaderDataType = HeaderData;
+  const datas = data.Header;
+  const navigation = data.Header.navigation;
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="font-mono bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
-        <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
-          <div className="flex lg:flex-1">
+        <nav
+          aria-label="Global"
+          className="flex items-center justify-between p-6 lg:px-8"
+        >
+          <div className="flex lg:flex-1 h-14 relative overflow-visible">
             <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
                 alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
+                src="/images/JTlogo2.png"
+                className="h-[120px] w-auto object-contain -mt-6"
               />
             </Link>
           </div>
@@ -58,7 +58,11 @@ interface HeaderDataType {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <Link key={item.name} to={item.href} className="text-sm/6 font-semibold text-gray-900">
+              <Link
+                key={item.name}
+                to={item.href}
+                className="text-sm/6 font-semibold text-gray-900"
+              >
                 {item.name}
               </Link>
             ))}
@@ -69,17 +73,17 @@ interface HeaderDataType {
             </Link>
           </div>
         </nav>
-        <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+        <Dialog
+          open={mobileMenuOpen}
+          onClose={setMobileMenuOpen}
+          className="lg:hidden"
+        >
           <div className="fixed inset-0 z-50" />
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between h-20">
               <Link to="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <img
-                  alt=""
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                  className="h-8 w-auto"
-                />
+                <img alt="" src="/images/JTlogo2.png" className="h-18 w-auto" />
               </Link>
               <button
                 type="button"
@@ -117,6 +121,6 @@ interface HeaderDataType {
         </Dialog>
       </header>
     </div>
-  )
-}
+  );
+};
 export default HeadHero;
