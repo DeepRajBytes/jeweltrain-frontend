@@ -21,7 +21,7 @@ const Team = () => {
       {/* Top Left Shape */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+        className="absolute inset-x-0 -top-40 -z-20 transform-gpu overflow-hidden blur-3xl sm:-top-80"
       >
         <div
           style={{
@@ -40,8 +40,9 @@ const Team = () => {
               Meet our leadership
             </h2>
             <p className="mt-6 text-lg/8 text-gray-600">
-              We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the
-              best results for our clients.
+              We’re a dynamic group of individuals who are passionate about what
+              we do and dedicated to delivering the best results for our
+              clients.
             </p>
           </div>
           <ul
@@ -51,12 +52,18 @@ const Team = () => {
             {people.map((person) => (
               <li key={person.id}>
                 <div className="flex items-center gap-x-6">
-                  <img alt="" src={person.imageUrl} className="size-16 rounded-full" />
+                  <img
+                    alt=""
+                    src={person.imageUrl}
+                    className="size-16 rounded-full"
+                  />
                   <div>
                     <h3 className="text-base/7 font-semibold tracking-tight text-gray-900">
                       {person.name}
                     </h3>
-                    <p className="text-sm/6 font-semibold text-indigo-600">{person.role}</p>
+                    <p className="text-sm/6 font-semibold text-indigo-600">
+                      {person.role}
+                    </p>
                   </div>
                 </div>
               </li>
