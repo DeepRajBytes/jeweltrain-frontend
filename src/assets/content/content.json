@@ -73,18 +73,18 @@
         "id": 2,
         "name": "'Nitin Yadav'",
         "role": "'Co-Founder / CEO'",
-        "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        "imageUrl": "https://img.freepik.com/premium-vector/3d-friend-people-contact-profile-user-icon-emblem-symbol-person-human-avatar-sign-symbol_659151-938.jpg"
       },
       {
         "id": 3,
         "name": "'Deep Raj Chouhan'",
         "role": "'Co-Founder / CTO'",
-        "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        "imageUrl": "https://media.licdn.com/dms/image/v2/D4D03AQHdyj_MLkFK5A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728823526659?e=1752710400&v=beta&t=uR054VGzBdtLXRFYAxCdnxSwhDE_CDIUe4U4-as4EgE"
       },
       {
         "id": 4,
-        "name": "'Abhishek Verma'",
-        "role": "'CCO'",
+        "name": "'Nilima Yadav'",
+        "role": "'CHO'",
         "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
       }
     ]
@@ -111,34 +111,33 @@
       },
       {
         "id": 2,
-        "title": "Boost your conversion rate",
+        "title": "What our client says",
         "href": "#",
         "description": "We had a great experience working with this team. Their expertise and tailored solutions significantly improved our operations. They were responsive, efficient, and focused on delivering value. Highly recommended for any business looking to grow and optimize their processes.",
         "date": "Mar 16, 2022",
         "datetime": "2020-03-16",
         "category": { "title": "Marketing", "href": "#" },
         "author": {
-          "name": "Mohit Chawla ",
-          "role": "Co-Founder",
-          "brandName": "Chawla Jewellers,Delhi ",
+          "name": "Namit Saluja ",
+          "role": "Director",
+          "brandName": "Mahendra Gems and Jewellers Pvt Ltd, Bilaspur  ",
           "href": "#",
-          "imageUrl": "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWEak5DGTrpGzNzeyNsR8gP3DIFCa64lWjTw&s"
         }
       },
       {
         "id": 3,
-        "title": "Boost your conversion rate",
+        "title": "Drive better results",
         "href": "#",
-        "description": "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
-        "date": "Mar 16, 2020",
+        "description": "A top-notch experience with a skilled team that provided customized solutions to streamline our processes. Prompt, effective, and committed to delivering real impact. A great choice for companies looking to scale and enhance performance.",
         "datetime": "2020-03-16",
-        "category": { "title": "Marketing", "href": "#" },
+        "category": { "title": "Review", "href": "#" },
         "author": {
-          "name": "Michael Foster",
-          "role": "Co-Founder / CTO",
-          "brandName": "KundanMala",
+          "name": "Mr. Kamlesh ",
+          "role": "Partner",
+          "brandName": "Golddeep Jewellers of Group",
           "href": "#",
-          "imageUrl": "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3D%2522jewellery%2Blogo%2522&psig=AOvVaw3yMktiOEYNieyHWI2mF1t_&ust=1747423424545000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPiu4daZpo0DFQAAAAAdAAAAABAE"
         }
       }
     ]
