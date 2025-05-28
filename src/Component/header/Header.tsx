@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import HeaderData from "../../assets/content/content.json";
+// import HeaderData from "../../assets/content/content.json";
 import { Link } from "react-router-dom";
 
 interface MenuItem {
@@ -23,8 +24,8 @@ interface HeaderDataType {
   };
 }
 
-const HeadHero = () => {
-  const data: HeaderDataType = HeaderData;
+const HeadHero = ({content}: any) => {
+  const data: HeaderDataType = content;
   const datas = data.Header;
   const navigation = data.Header.navigation;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

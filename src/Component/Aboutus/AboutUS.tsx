@@ -1,4 +1,5 @@
-import AboutData from "../../assets/content/content.json";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// import AboutData from "../../assets/content/content.json";
 
 interface AboutDataType {
   aboutus: {
@@ -17,8 +18,8 @@ interface AboutDataType {
     imagethree: string;
   };
 }
-const About = () => {
-  const data: AboutDataType = AboutData;
+const About = ({ content}: any) => {
+  const data: AboutDataType = content;
   const datas = data.aboutus;
   return (
     <>
@@ -116,8 +117,6 @@ const About = () => {
             </div>
           </div>
         </section>
-
-        
       </div>
     </>
   );

@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, useRef } from "react";
-import ServiceData from "../../assets/content/content.json";
+// import ServiceData from "../../assets/content/content.json";
 
 interface ServiceItem {
   title: string;
@@ -15,8 +16,8 @@ interface ServiceDataType {
   };
 }
 
-const Services = () => {
-  const data: ServiceDataType = ServiceData;
+const Services = ({ content }: any) => {
+  const data: ServiceDataType = content;
   const services = data.service.ourServic;
 
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);

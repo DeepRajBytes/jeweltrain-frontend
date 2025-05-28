@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import toast, { Toaster } from "react-hot-toast";
-import FooterData from "../../assets/content/content.json";
+// import FooterData from "../../assets/content/content.json";
 import { Link } from "react-router-dom";
 
 interface ListContent {
@@ -29,12 +30,11 @@ interface FooterDataType {
   };
 }
 
-const Footer = () => {
-  const data: FooterDataType = FooterData;
+const Footer = ({ content }: any) => {
+  const data: FooterDataType = content;
   const FooterContent = data.FooterData.FooterContent;
   // const SocialIcons = data.FooterData.SocialIcons
   const handleDownload = (fileName: string, serviceName: string) => {
-    console.log("1");
     const pdfPath = `/content/${fileName}`;
     const link = document.createElement("a");
     link.href = pdfPath;

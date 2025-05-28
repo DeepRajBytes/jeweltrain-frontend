@@ -7,21 +7,22 @@ import Footer from './Component/Footer/Footer'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from './Component/Aboutus/AboutUS';
 import Career from './Component/Career/Career';
+import content from './assets/content/content.json'
 
 function App() {
   return (
-  <>
-  <Router>
-  <HeadHero></HeadHero>
-  <Routes>
-    <Route path='/' element={<Home />}></Route>
-    <Route path='/about-us' element={<About />}></Route>
-    <Route path='/career' element={<Career />}></Route>
-  </Routes>
-  <Footer></Footer>
-  </Router>
-  </>
-  )
+    <>
+      <Router>
+        <HeadHero content={content}></HeadHero>
+        <Routes>
+          <Route path="/" element={<Home content={content} />}></Route>
+          <Route path="/about-us" element={<About content={content} />}></Route>
+          <Route path="/career" element={<Career content={content} />}></Route>
+        </Routes>
+        <Footer content={content}></Footer>
+      </Router>
+    </>
+  );
 }
 
 export default App;

@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   ChevronDownIcon,
   DocumentArrowUpIcon,
 } from "@heroicons/react/24/outline";
-import CareerPage from "../../assets/content/content.json";
+// import CareerPage from "../../assets/content/content.json";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { AllRoutes } from "../../Environment/routes";
@@ -29,8 +30,8 @@ interface CareerPageType {
   };
 }
 
-const Career = () => {
-  const data: CareerPageType = CareerPage;
+const Career = ({ content }: any) => {
+  const data: CareerPageType = content;
   const datas = data.CareerPage.FormDetail;
   const [loading, setLoading] = useState(false);
   const [buttonloading, setButtonloading] = useState(false);
@@ -86,8 +87,6 @@ const Career = () => {
           const responseMatrix = response.data.data;
           setExpirenceList(responseMatrix.ExpirenceList);
           setStateList(responseMatrix.StateList);
-          console.log("ExpirenceList", responseMatrix.ExpirenceList);
-          console.log("StateList", responseMatrix.StateList);
         } else {
           console.warn("API returned success != 1");
         }
@@ -720,7 +719,6 @@ const Career = () => {
                           ? "bg-gray-400 hover:bg-gray-400 cursor-not-allowed"
                           : "bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"
                       }`}
-                      
                     >
                       {buttonloading ? (
                         <FontAwesomeIcon

@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useState } from "react";
-import bookConsultant from "../../assets/content/content.json";
+// import bookConsultant from "../../assets/content/content.json";
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { AllRoutes } from "../../Environment/routes";
 import toast, { Toaster } from "react-hot-toast";
@@ -16,7 +17,7 @@ interface Bookconsultant {
   thankyoumesage: string;
 }
 
-const BookConsult = () => {
+const BookConsult = ({ content }: any) => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [submitDisabel, setsubmitDisabel] = useState(false);
   {
@@ -69,7 +70,7 @@ const BookConsult = () => {
       alert("An error occurred. Please try again.");
     }
   };
-  const data: Bookconsultant = bookConsultant.BookConsultant;
+  const data: Bookconsultant = content.BookConsultant;
   return (
     <div
       id="book-consult"

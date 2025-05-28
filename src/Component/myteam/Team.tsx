@@ -1,4 +1,5 @@
-import TeamData from "../../assets/content/content.json"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// import TeamData from "../../assets/content/content.json"
 
 interface PeopleItem {
     name: string,
@@ -13,8 +14,8 @@ interface TeamDatatype {
     }
 }
 
-const Team = () => {
-    const data :  TeamDatatype = TeamData;
+const Team = ({ content }: any) => {
+  const data: TeamDatatype = content;
   const people = data.Team.people;
   return (
     <div className="font-mono bg-white relative isolate">
