@@ -14,6 +14,7 @@ import { RootState } from "./redux/reducers/rootReducer";
 import { useEffect } from "react";
 import type { ThunkDispatch } from "redux-thunk";
 import type { AnyAction } from "redux";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 type AppDispatch = ThunkDispatch<RootState, unknown, AnyAction>;
 const useAppDispatch = () => useDispatch<AppDispatch>();
@@ -31,7 +32,16 @@ function App() {
     dispatch(fetchContent());
   }, [dispatch]);
 
-  if (loading || !content) return <div>Loading...</div>;
+  if (loading || !content) return (
+    <div className="flex items-center justify-center h-screen w-screen bg-white">
+      <DotLottieReact
+        src="/images/Loaders/render1.lottie"
+        loop
+        autoplay
+        className="w-132 sm:w-120 md:w-152 lg:w-160"
+      />
+    </div>
+  );
   if (error) return <div>Error loading content: {error}</div>;
   
   return (
