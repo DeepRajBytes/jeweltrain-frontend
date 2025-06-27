@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import AboutData from "../../assets/content/content.json";
-
+import { motion } from "motion/react";
+import { CardBody, CardContainer, CardItem } from "../../UI/3d-card";
 interface AboutDataType {
   aboutus: {
     headingone: string;
@@ -18,11 +19,20 @@ interface AboutDataType {
     imagethree: string;
   };
 }
-const About = ({ content}: any) => {
+const About = ({ content }: any) => {
   const data: AboutDataType = content;
   const datas = data.aboutus;
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0.0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        delay: 0.3,
+        duration: 0.8,
+        ease: "easeInOut",
+      }}
+      className="relative flex flex-col gap-4 items-center justify-center px-4"
+    >
       <div className="font-mono bg-white relative isolate">
         <div
           aria-hidden="true"
@@ -42,18 +52,34 @@ const About = ({ content}: any) => {
             <div className="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1">
               <div className="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last">
                 <div className="pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex">
-                  <img
-                    className=" rounded-xl object-cover"
-                    src={datas.imageone}
-                    alt="about Us image"
-                  />
+                  <CardContainer className="inter-var" containerClassName="p-0">
+                    <CardBody className="h-full w-full">
+                      <CardItem translateZ={50}>
+                        <img
+                          className="rounded-xl object-cover w-full h-full"
+                          src={datas.imageone}
+                          alt="about Us image"
+                        />
+                      </CardItem>
+                    </CardBody>
+                  </CardContainer>
                 </div>
-                <img
-                  className="sm:ml-0 ml-auto rounded-xl object-cover"
-                  src={datas.imagetwo}
-                  alt="about Us image"
-                />
+                <CardContainer
+                  className="inter-var sm:ml-0 ml-auto"
+                  containerClassName="p-0"
+                >
+                  <CardBody className="h-full w-full">
+                    <CardItem translateZ={50}>
+                      <img
+                        className="rounded-xl object-cover w-full h-full"
+                        src={datas.imagetwo}
+                        alt="about Us image"
+                      />
+                    </CardItem>
+                  </CardBody>
+                </CardContainer>
               </div>
+
               <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
                 <div className="w-full flex-col justify-center items-start gap-8 flex">
                   <div className="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
@@ -109,16 +135,25 @@ const About = ({ content}: any) => {
                   </p>
                 </div>
               </div>
-              <img
-                className="lg:mx-0 mx-auto h-full rounded-3xl object-cover"
-                src={datas.imagethree}
-                alt="about Us image"
-              />
+              <CardContainer
+                className="inter-var lg:mx-0 mx-auto"
+                containerClassName="p-0"
+              >
+                <CardBody className="w-full h-full">
+                  <CardItem translateZ={50}>
+                    <img
+                      className="rounded-3xl object-cover w-full h-full"
+                      src={datas.imagethree}
+                      alt="about Us image"
+                    />
+                  </CardItem>
+                </CardBody>
+              </CardContainer>
             </div>
           </div>
         </section>
       </div>
-    </>
+    </motion.div>
   );
 };
 export default About;
